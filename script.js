@@ -1,16 +1,20 @@
 var a_canvas = document.getElementById("a");
 var context = a_canvas.getContext("2d");
 var start = 0;
-
+var loop;
 
 function myFunction() {
-
     start++;
 
     if (start == 2) {
+          loop = setInterval(function(){
           drawSun();
+          if (start == 3)
+            clearInterval(loop);
+        }, 100);
           document.getElementById('btn').innerHTML="Clear Canvas";
     }
+
 
     if (start == 1) {
         drawHouse();
@@ -19,6 +23,7 @@ function myFunction() {
     }
 
     if (start == 3) {
+      clearInterval(loop);
         clearCanvas();
         document.getElementById('btn').innerHTML="Draw House";
         start = 0;
@@ -41,7 +46,7 @@ function drawSun() {
 
 function drawRays() {
     var i = 0;
-    for (i = 0; i < 40; i++) {
+    for (i = 0; i < 7; i++) {
         var x = Math.floor(Math.random() * (-110)) + 140;
         var y = Math.floor(Math.random() * (-110)) + 120;
         context.beginPath();
@@ -62,7 +67,21 @@ function drawHouse() {
     context.lineTo(325, 175);
     context.lineTo(225, 100);
     context.fill();
+    drawWindow();
 
+}
+
+function drawWindow(){
+  context.fillStyle = "white";
+  context.fillRect(150, 200, 20, 20);
+  context.fillRect(180, 200, 20, 20);
+  context.fillRect(150, 230, 20, 20);
+  context.fillRect(180, 230, 20, 20);
+
+  context.fillRect(250, 200, 20, 20);
+  context.fillRect(280, 200, 20, 20);
+  context.fillRect(250, 230, 20, 20);
+  context.fillRect(280, 230, 20, 20);
 }
 
 function clearCanvas() {
