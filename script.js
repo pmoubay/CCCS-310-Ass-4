@@ -1,33 +1,36 @@
 var a_canvas = document.getElementById("a");
 var context = a_canvas.getContext("2d");
-var start = 1;
-
+var start = 0;
 
 
 function myFunction() {
 
-    if (start == 2) {
-        drawSun();
+    start++;
 
+    if (start == 2) {
+          drawSun();
+          document.getElementById('btn').innerHTML="Clear Canvas";
     }
 
     if (start == 1) {
         drawHouse();
+        document.getElementById('btn').innerHTML="Draw Sun";
 
     }
 
     if (start == 3) {
         clearCanvas();
+        document.getElementById('btn').innerHTML="Draw House";
         start = 0;
     }
 
-    start++;
+
 
 }
 
 // Draw sun
 function drawSun() {
-
+    context.clearRect(0, 0, 175, 125);
     context.fillStyle = "yellow";
     context.beginPath();
     context.arc(75, 75, 25, 0, 2 * Math.PI);
