@@ -30,23 +30,24 @@ function drawSun() {
 
     context.fillStyle = "yellow";
     context.beginPath();
-    context.arc(75, 75, 40, 0, 2 * Math.PI);
+    context.arc(75, 75, 25, 0, 2 * Math.PI);
     context.fill();
     context.closePath();
+    drawRays();
 }
 
 function drawRays() {
-    var i;
-
-    var x = 50;
-    var y = 50;
-    context.beginPath();
-    context.moveTo(75, 75);
-    context.lineTo(75 + x, 75 + y);
-    context.strokeStyle = "yellow";
-    context.lineWidth = 2;
-    context.stroke();
-
+    var i = 0;
+    for (i = 0; i < 40; i++) {
+        var x = Math.floor(Math.random() * (-110)) + 140;
+        var y = Math.floor(Math.random() * (-110)) + 120;
+        context.beginPath();
+        context.moveTo(75, 75);
+        context.lineTo(x, y);
+        context.strokeStyle = "yellow";
+        context.lineWidth =  Math.floor(Math.random() * 2 ) + 1;
+        context.stroke();
+    }
 }
 
 // Draw House
